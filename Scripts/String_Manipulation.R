@@ -44,7 +44,7 @@ grep("string",
 
 # Some characters have special meanings in regular expressions
 #       To search for the question mark "?", you need to "escape" it
-grep("\\?",my_string_vector, value = FALSE)
+grep("\\?",my_string_vector, value = TRUE)
 
 # Closely related to the grep() function is the grepl() function, which returns
 # a logical for whether a string contains a character or sequence of characters:
@@ -56,7 +56,7 @@ stringr::str_replace_all(my_string, "e","___")
 
 # It is also possible to pull out all substrings matching a given string
 # argument.
-stringr::str_extract_all(my_string, "with")[[1]] # both from "sentences"
+stringr::str_extract_all(my_string, "two")[[1]] # both from "sentences"
 
 # This gets much more useful when you can generalize the patterns
 # You will notice here that the "[0-9]+" argument does not look like
