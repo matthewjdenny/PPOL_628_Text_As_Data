@@ -176,7 +176,7 @@ item_strings <- stringr::str_extract_all(one_line,"\\(\\d\\).+?\\.")[[1]]
 item_strings
 
 # Can use str_match and parentheses to identify the stuff you want
-for_strings <- stringr::str_match(item_strings,"For (.+), \\$")
+for_strings <- stringr::str_match(item_strings,"For (.+), (\\$)")
 for_strings
 # We want the second column there
 for_strings <- for_strings[,2]
@@ -192,7 +192,4 @@ money <- as.numeric(money_strings)
 money
 
 # Now let's make it data:
-appropriations_data <- data.frame(programs = for_strings,
-                                  budget = money,
-                                  stringsAsFactors = FALSE)
-appropriations_data
+0
