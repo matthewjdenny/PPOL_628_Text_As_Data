@@ -15,6 +15,9 @@ require(quanteda)
 require(preText)
 require(stopwords)
 
+# you should really check out this quick start guide:
+# https://quanteda.io/articles/quickstart.html
+
 # set working directory (you will need to change this for your computer)
 setwd("~/Desktop/Bill_Text")
 
