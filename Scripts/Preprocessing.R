@@ -83,6 +83,8 @@ head(word_counts,n = 100)
 # bottom words
 tail(word_counts,n = 100)
 
+table(word_counts)
+
 # another way to look at top terms:
 topfeatures(doc_term_matrix,40)
 
