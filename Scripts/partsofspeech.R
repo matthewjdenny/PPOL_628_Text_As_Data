@@ -148,10 +148,20 @@ topfeatures(doc_term_matrix,
             groups = "President")
 
 
+# now lets compare to unigrams/standard 2-4 grams.
+corp2 <- quanteda::data_corpus_inaugural
 
 
+doc_term_matrix2 <- quanteda::dfm(corp2,
+                                 tolower = TRUE,
+                                 stem = FALSE,
+                                 remove = stopwords("english"),
+                                 remove_punct = TRUE,
+                                 ngrams = 2:4)
 
-
+topfeatures(doc_term_matrix2,
+            n = 5,
+            groups = "President")
 
 
 
