@@ -97,6 +97,7 @@ corp <- quanteda::data_corpus_inaugural
 
 summary(corp)
 
+
 # Let's look at one document (Washington's first inaugural)
 documents <- texts(corp)
 
