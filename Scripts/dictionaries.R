@@ -74,3 +74,24 @@ my_dict <- dictionary(list(terror = c("terrorism",
 by_pres_mat <- dfm(recent_corpus, dictionary = my_dict)
 # take a look:
 by_pres_mat
+
+
+#### lets actually pull out the positive and negative terms ####
+# create a custom dictionary which starts as a list:
+temp <- as.list(c(data_dictionary_LSD2015$positive,
+                  data_dictionary_LSD2015$negative))
+
+# set the names equal to the word stems:
+names(temp) <- stringr::str_replace_all(
+    c(data_dictionary_LSD2015$positive,
+      data_dictionary_LSD2015$negative),
+    "[^a-zA-Z]",
+    "")
+
+# now we create a dfm with only positive and negative terms:
+only_keep_pos_neg <- dfm(example,
+                         dictionary = dictionary(temp))
+
+# look at the top features:
+topfeatures(only_keep_pos_neg, n = 100)
+
