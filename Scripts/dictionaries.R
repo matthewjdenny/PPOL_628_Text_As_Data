@@ -26,10 +26,10 @@ toks <- tokens(example, remove_punct = TRUE)
 summary(data_dictionary_LSD2015)
 
 # lets look at the different term classes:
-data_dictionary_LSD2015$positive[1:100]
-data_dictionary_LSD2015$negative[1:100]
+data_dictionary_LSD2015$positive[300:500]
+data_dictionary_LSD2015$negative[400:600]
 data_dictionary_LSD2015$neg_positive[1:100]
-data_dictionary_LSD2015$neg_negative[1:100]
+data_dictionary_LSD2015$neg_negative[1000:1100]
 
 # now we code our speeches using the LSD dictionary
 coded <- tokens_lookup(
@@ -40,7 +40,7 @@ head(coded, 3)
 # now we make a document_term matrix out of the coded terms:
 dfm_lsd <- dfm(coded)
 # and convert it to a data.frame:
-valences_by_speech<- convert(dfm_lsd, to = "data.frame")
+valences_by_speech <- convert(dfm_lsd, to = "data.frame")
 
 # pull out year
 valences_by_speech$year <- as.numeric(stringr::str_replace_all(valences_by_speech$document,"-.*",""))
@@ -57,6 +57,7 @@ ggplot(valences_by_speech, aes(x = year, y = valence)) +
     geom_point() +
     geom_smooth()
 
+data_corpus_inaugural[20]
 
 # another example
 recent_corpus <- corpus_subset(data_corpus_inaugural, Year > 1991)
