@@ -53,7 +53,7 @@ pmi_table <- pmi(dtm_triplet)
 
 # we can also calculate the mutual information of the joint distribution
 # implied by the dtm:
-mutual_information(dtm_dense)
+mutual_information(dtm_triplet)
 
 # let's try removing stopwors and see what happens to the mutual information
 # of the join distribution impled by the resulting dtm:
@@ -82,7 +82,9 @@ calc_entropy <- function(input) {
 }
 
 # calculate entropy
-entropies <- apply(FUN = calc_entropy, X = dtm_dense, MARGIN = 2)
+entropies <- apply(FUN = calc_entropy,
+                   X = dtm_dense,
+                   MARGIN = 2)
 
 # find highest entropy terms
 entropies <- entropies[order(entropies,decreasing = T)]

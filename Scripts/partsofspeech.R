@@ -94,7 +94,8 @@ tagged_document <- data.frame(tokens = tokens,
 
 # Lets load in some example data:
 corp <- quanteda::data_corpus_inaugural
-
+corp_phrases <- corp
+corp_pos <- corp
 summary(corp)
 
 
@@ -108,17 +109,21 @@ phrase_documents <- phrasemachine(
     maximum_ngram_length = 4,
     minimum_ngram_length = 2,
     return_phrase_vectors = TRUE,
-    return_tag_sequences = FALSE,
+    return_tag_sequences = TRUE,
     memory = "-Xmx512M")
 
 # turn from a list of character vectors of tokens into a character vector of space separated words:
-temp <- unlist(lapply(phrase_documents,paste0,collapse = " "))
+# temp <- unlist(lapply(phrase_documents,paste0,collapse = " "))
+temp_phrases <- rep("",length(phrase_documents))
+for(i in 1:length(phrase_documents)) {
+    temp_phrases[i] <- paste0(phrase_documents[[i]]$phrases,collapse = " ")
+}
 
 # assign back into our corpus object to retain metadata
-texts(corp) <- temp
+texts(corp_phrases) <- temp_phrases
 
 # now we tokenize only on whitespaces
-phrase_tokens <- tokens(corp,
+phrase_tokens <- tokens(corp_phrases,
                         what = "fastestword")
 
 
@@ -128,10 +133,34 @@ doc_term_matrix <- quanteda::dfm(phrase_tokens,
                                  stem = FALSE,
                                  remove_punct = FALSE)
 
+
+temp_pos <- rep("",length(phrase_documents))
+for(i in 1:length(phrase_documents)) {
+    temp_pos[i] <- paste0(phrase_documents[[i]]$tags,collapse = " ")
+}
+
+# assign back into our corpus object to retain metadata
+texts(corp_pos) <- temp_pos
+
+# now we tokenize only on whitespaces
+pos_tokens <- tokens(corp_pos,
+                        what = "fastestword")
+
+
+# and create a document term matrix
+pos_term_matrix <- quanteda::dfm(pos_tokens,
+                                 tolower = FALSE,
+                                 stem = FALSE,
+                                 remove_punct = FALSE)
+
 doc_term_matrix
 
 # take a look at the top 100 most freuent terms:
-topfeatures(doc_term_matrix,100)
+topfeatures(pos_term_matrix,100)
+
+docvars(doc_term_matrix,"AN_term_counts") <- as.numeric(pos_term_matrix[,5])
+
+docvars(doc_term_matrix)
 
 # now look at least frequent terms:
 topfeatures(doc_term_matrix,
@@ -165,4 +194,4 @@ topfeatures(doc_term_matrix2,
             groups = "President")
 
 
-
+save(list = c("corp","phrases_corp"),file = "~/Desktop/my_phrases_corpus.RData")
