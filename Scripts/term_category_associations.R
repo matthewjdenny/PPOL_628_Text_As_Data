@@ -1,3 +1,4 @@
+# Term-category associations
 
 # Preliminaries
 rm(list = ls())
@@ -86,11 +87,8 @@ top_features <- feature_selection(topic_party_table,
                                   method = "informed Dirichlet",
                                   rank_by_log_odds = TRUE)
 
-
-
-
-
-# Now lets generate some plots with different input rows:
+# Now lets generate some plots with different input rows, and generate some
+# funnel plots to illustrate the top terms:
 rownames(topic_party_table)
 top_features <- feature_selection(topic_party_table,
                                   rows_to_compare = c(6,5),
@@ -162,21 +160,40 @@ fightin_words_plot(top_features,
 dev.off()
 
 
+############ ACMI #############
 
+# Remember that we can calculate the mutual information of the joint
+# distribution implied by the normalization of a contingency table:
+mutual_information(topic_party_table[1:2,])
 
+# lets look at some terms
+colnames(topic_party_table)[1:50]
 
+# lets try removing a stop-term like "the":
+mutual_information(topic_party_table[1:2,-12])
 
-feature_selection_object = top_features
-title = ""
-positive_category = "Category 1"
-negative_category = "Category 2"
-xlab = "term count"
-display_top_words = 20
-display_terms_next_to_points = FALSE
-size_terms_by_frequency = FALSE
-right_margin = 20
-max_terms_to_display = 100000
-use_subsumed_ngrams = FALSE
-limits = NULL
-clean_publication_plots = FALSE
-rank_by_log_odds = FALSE
+# now we can calcualte term ACMI as a way of assessing how much information each
+# terms gives us about category, on average.
+acmi_contribs <- ACMI_contribution(topic_party_table)
+
+# now lets look at terms by their ACMI:
+term_acmi <- data.frame(
+    term = colnames(topic_party_table),
+    acmi = acmi_contribs$average_contribution,
+    count = slam::col_sums(topic_party_table),
+    stringsAsFactors = FALSE)
+# and order by acmi score:
+term_acmi <- term_acmi[order(term_acmi$acmi, decreasing = F),]
+
+# null out the rownames for display:
+rownames(term_acmi) <- NULL
+
+# lets look at the number of terms in each broad category:
+length(which(term_acmi$acmi < 0))
+length(which(term_acmi$acmi == 0))
+length(which(term_acmi$acmi > 0))
+
+# and look at the terms with the highest and lowest ACMI scores:
+head(term_acmi,n = 50)
+tail(term_acmi,n = 50)
+
