@@ -10,3 +10,9 @@ TA: Ted Ellsworth <tedellsw@terpmail.umd.edu>
 ## Syllabus
 Syllabus is available to download [here](https://github.com/matthewjdenny/PPOL_628_Text_As_Data/blob/master/PPOL_628_Syllabus.pdf) (current as of 2/3/20).
 
+## Lecture Videos 
+
+### Week 7 - Term Category Associations:
+Lecture Video: [https://www.youtube.com/watch?v=StCpTZne2t4](https://www.youtube.com/watch?v=StCpTZne2t4)
+Lab video: [https://www.youtube.com/watch?v=xcz3jjdk2T4](https://www.youtube.com/watch?v=xcz3jjdk2T4)
+
