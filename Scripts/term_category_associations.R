@@ -5,12 +5,14 @@ rm(list = ls())
 
 # load in packages
 library(quanteda)
+# Please reinstall
+# devtools::install_github("matthewjdenny/SpeedReader")
 library(SpeedReader)
 library(slam)
 
 # optionally install the quanteda.corpora package for access to additional
 # corpora:
-#devtools::install_github("quanteda/quanteda.corpora")
+# devtools::install_github("quanteda/quanteda.corpora")
 library(quanteda.corpora)
 
 # load in the example data that I uploaded to the github for this course:
@@ -24,6 +26,9 @@ dtm <- dfm(bills,
            remove_punct = TRUE,
            remove_numbers = TRUE,
            ngrams = 1:4)
+
+# see what it contains:
+dtm
 
 # now we are going to convert this into a simple triplet matrix format:
 dtm_triplet <- SpeedReader::convert_quanteda_to_slam(dtm)
@@ -83,7 +88,7 @@ top_features <- feature_selection(topic_party_table,
 # and now we reduce alpha significantly and look at log-odds ratios:
 top_features <- feature_selection(topic_party_table,
                                   rows_to_compare = c(2,1),
-                                  alpha = .001*avg_terms_per_category,
+                                  alpha = .00001*avg_terms_per_category,
                                   method = "informed Dirichlet",
                                   rank_by_log_odds = TRUE)
 
@@ -96,14 +101,16 @@ top_features <- feature_selection(topic_party_table,
                                   method = "informed Dirichlet",
                                   rank_by_log_odds = FALSE)
 
-# output a pdf with the plot included:
-pdf(file = "~/Desktop/Example_Fightin_Words_Plot_1.pdf",
+# output a png with the plot included:
+png(file = "~/Desktop/Example_Fightin_Words_Plot_1.png",
     width = 10,
-    height = 8.5)
+    height = 8.5,
+    units = "in",
+    res = 200)
 fightin_words_plot(top_features,
                    positive_category = "Democrat",
                    negative_category = "Republican",
-                   max_terms_to_display = 100000)
+                   max_terms_to_display = 1000000)
 dev.off()
 
 
@@ -138,25 +145,29 @@ top_features <- feature_selection(topic_party_table,
                                   subsume_ngrams = TRUE)
 
 # output a PDF:
-pdf(file = "~/Desktop/Example_Fightin_Words_Plot_3.pdf",
+png(file = "~/Desktop/Example_Fightin_Words_Plot_3.png",
     width = 10,
-    height = 8.5)
+    height = 8.5,
+    units = "in",
+    res = 200)
 fightin_words_plot(top_features,
                    positive_category = "Democrat",
                    negative_category = "Republican",
                    use_subsumed_ngrams = FALSE,
-                   max_terms_to_display = 200000)
+                   max_terms_to_display = 2000000)
 dev.off()
 
 # and now try the same plot but with subsumed n-grams:
-pdf(file = "~/Desktop/Example_Fightin_Words_Plot_4.pdf",
+png(file = "~/Desktop/Example_Fightin_Words_Plot_4.png",
     width = 10,
-    height = 8.5)
+    height = 8.5,
+    units = "in",
+    res = 200)
 fightin_words_plot(top_features,
                    positive_category = "Democrat",
                    negative_category = "Republican",
                    use_subsumed_ngrams = TRUE,
-                   max_terms_to_display = 200000)
+                   max_terms_to_display = 2000000)
 dev.off()
 
 
