@@ -13,6 +13,6 @@ Syllabus is available to download [here](https://github.com/matthewjdenny/PPOL_6
 ## Lecture Videos 
 
 ### Week 7 - Term Category Associations:
-Lecture Video: [https://www.youtube.com/watch?v=StCpTZne2t4](https://www.youtube.com/watch?v=StCpTZne2t4)
-Lab video: [https://www.youtube.com/watch?v=xcz3jjdk2T4](https://www.youtube.com/watch?v=xcz3jjdk2T4)
+* Lecture Video: [https://www.youtube.com/watch?v=StCpTZne2t4](https://www.youtube.com/watch?v=StCpTZne2t4)
+* Lab video: [https://www.youtube.com/watch?v=xcz3jjdk2T4](https://www.youtube.com/watch?v=xcz3jjdk2T4)
 
