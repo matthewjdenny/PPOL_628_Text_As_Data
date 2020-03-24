@@ -16,3 +16,7 @@ Syllabus is available to download [here](https://github.com/matthewjdenny/PPOL_6
 * Lecture Video: [https://www.youtube.com/watch?v=StCpTZne2t4](https://www.youtube.com/watch?v=StCpTZne2t4)
 * Lab video: [https://www.youtube.com/watch?v=xcz3jjdk2T4](https://www.youtube.com/watch?v=xcz3jjdk2T4)
 
+### Week 8 - Text Reuse and Document Similarity:
+* Lecture Video: [https://www.youtube.com/watch?v=QWmxt2VGN3E](https://www.youtube.com/watch?v=QWmxt2VGN3E)
+* Lab video: [https://www.youtube.com/watch?v=mwCTeD6Vybs](https://www.youtube.com/watch?v=mwCTeD6Vybs)
+
