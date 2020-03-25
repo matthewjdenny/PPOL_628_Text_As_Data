@@ -245,4 +245,55 @@ bill_tr2 <- document_similarities(filenames = NULL,
 head(bill_tr2)
 
 
+# Here is a little bit on how to reduce the vocabulary size of your documents
+# before running the document_similarities function as I went over in the Q&A
+# video:
+
+# get some example texts:
+example <- texts(data_corpus_sotu_1980)
+
+# pull out a single document
+ex1 <- as.character(example[1])
+
+# how long is it? nchar is an easy way to get a rouhg estimate in characters:
+nchar(ex1)
+
+# lets get the most basic english stopwords list and remove those:
+st <- stopwords("english")
+
+# first we will probably want to remove everything that is not a letter or a
+# space:
+ex1 <- stringr::str_replace_all(ex1,"[^A-Za-z\\s]","")
+
+# then we will want to lowercae everything:
+ex1  <- tolower(ex1)
+
+# now we can loop over each stop term and remove it. You could think of putting
+# this inside of a loop over documents, or just applying to all documents:
+for (i in 1:length((st))){
+    ex1 <- stringr::str_replace_all(ex1,paste(" ",st[i]," ", sep = "")," ")
+}
+
+# now we remove all newlines:
+ex1 <- stringr::str_replace_all(ex1,"\\n"," ")
+
+# and finally replace all instances of one or more spaces with just one space:
+ex1 <- stringr::str_replace_all(ex1,"\\s+"," ")
+
+# and ss the reduction in the number of characters!
+nchar(ex1)
+ex1
+
+# For reference, here is how you would apply to all documents in this example:
+example <- stringr::str_replace_all(example,"[^A-Za-z\\s]","")
+example  <- tolower(example)
+for (i in 1:length((st))){
+    example <- stringr::str_replace_all(example,paste(" ",st[i]," ", sep = "")," ")
+}
+example <- stringr::str_replace_all(example,"\\n"," ")
+example <- stringr::str_replace_all(example,"\\s+"," ")
+
+
+
+
 
