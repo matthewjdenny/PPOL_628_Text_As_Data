@@ -14,5 +14,10 @@ Syllabus is available to download [here](https://github.com/matthewjdenny/PPOL_6
 
 ### Week 7 - Term Category Associations:
 * Lecture Video: [https://www.youtube.com/watch?v=StCpTZne2t4](https://www.youtube.com/watch?v=StCpTZne2t4)
-* Lab video: [https://www.youtube.com/watch?v=xcz3jjdk2T4](https://www.youtube.com/watch?v=xcz3jjdk2T4)
+* Lab Video: [https://www.youtube.com/watch?v=xcz3jjdk2T4](https://www.youtube.com/watch?v=xcz3jjdk2T4)
+
+### Week 8 - Text Reuse and Document Similarity:
+* Lecture Video: [https://www.youtube.com/watch?v=QWmxt2VGN3E](https://www.youtube.com/watch?v=QWmxt2VGN3E)
+* Lab Video: [https://www.youtube.com/watch?v=mwCTeD6Vybs](https://www.youtube.com/watch?v=mwCTeD6Vybs)
+* Q&A Video: [https://www.youtube.com/watch?v=30BPsGzScB8](https://www.youtube.com/watch?v=30BPsGzScB8)
 
