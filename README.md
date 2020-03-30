@@ -21,3 +21,7 @@ Syllabus is available to download [here](https://github.com/matthewjdenny/PPOL_6
 * Lab Video: [https://www.youtube.com/watch?v=mwCTeD6Vybs](https://www.youtube.com/watch?v=mwCTeD6Vybs)
 * Q&A Video: [https://www.youtube.com/watch?v=30BPsGzScB8](https://www.youtube.com/watch?v=30BPsGzScB8)
 
+### Week 9 - Supervised Learning with Text:
+* Lecture Video: [https://www.youtube.com/watch?v=39MYgdN1JsQ](https://www.youtube.com/watch?v=39MYgdN1JsQ)
+* Lab Video: [https://www.youtube.com/watch?v=EUQqCHw1cUU](https://www.youtube.com/watch?v=EUQqCHw1cUU)
+
