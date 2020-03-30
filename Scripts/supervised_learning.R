@@ -20,7 +20,7 @@ library(pROC)
 # load in data from term category associations lab:
 load("~/Desktop/Example_Bills_Corpus_Object.RData")
 
-head(summary(bills))
+summary(bills)
 
 # process our data:
 dtm <- dfm(bills,
@@ -105,7 +105,7 @@ dev.off()
 # lets take a look at the coefficients:
 head(coef(cvfit, s = "lambda.min"),n = 50)
 
-
+# make predictions
 pred <- predict(
     cvfit,
     newx = test,
@@ -145,13 +145,7 @@ dev.off()
 # we can also get the AUC for this predictor:
 auc.perf = performance(lasso.pred,
                        measure = "auc")
-auc.perf@y.values
-
-
-# we can also get the AUC for this predictor:
-auc.perf = performance(lasso.pred,
-                       measure = "auc")
-auc.perf@y.values
+auc.perf@y.values[[1]]
 
 # and look at accuracy by threshold
 acc.perf = performance(lasso.pred, measure = "acc")
@@ -194,7 +188,7 @@ test.label   <- bill_features$topic_numeric[-trainIndex]
 
 
 # Set our hyperparameters
-param <- list(objective   = "multi:softmax",
+param <- list(objective = "multi:softmax",
               num_class = 3)
 
 set.seed(1234)
@@ -208,6 +202,7 @@ xgb <- xgboost(
     print_every_n = 10,
     verbose = 1)
 
+# generate predictions for test set:
 pred <- predict(xgb, test)
 
 # Create the confusion matrix
@@ -347,7 +342,20 @@ abline(h = c(0.1, 0.3, 0.5, 0.7, 0.9), col="lightgray", lty="dotted")
 lines(x = c(0, 1), y = c(0, 1), col="black", lty="dotted")
 dev.off()
 
+# we can also get the AUC for this predictor:
+auc.perf = performance(xgb.pred,
+                       measure = "auc")
+auc.perf@y.values[[1]]
 
+# and look at accuracy by threshold
+acc.perf = performance(xgb.pred, measure = "acc")
+plot(acc.perf)
+
+# we can also calculate the optimal accuracy and its associated threshold:
+ind = which.max( slot(acc.perf, "y.values")[[1]] )
+acc = slot(acc.perf, "y.values")[[1]][ind]
+cutoff = slot(acc.perf, "x.values")[[1]][ind]
+print(c(accuracy= acc, cutoff = cutoff))
 
 ################ Preprocessing <-> Accuracy #################
 
