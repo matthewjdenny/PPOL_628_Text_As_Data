@@ -25,3 +25,12 @@ Syllabus is available to download [here](https://github.com/matthewjdenny/PPOL_6
 * Lecture Video: [https://www.youtube.com/watch?v=39MYgdN1JsQ](https://www.youtube.com/watch?v=39MYgdN1JsQ)
 * Lab Video: [https://www.youtube.com/watch?v=EUQqCHw1cUU](https://www.youtube.com/watch?v=EUQqCHw1cUU)
 
+
+### Week 10 - Topic Models:
+* Lecture Video: [https://www.youtube.com/watch?v=5onqkjEHGyE](https://www.youtube.com/watch?v=5onqkjEHGyE)
+* Lab Video: [https://www.youtube.com/watch?v=ozhuzdE8dRc](https://www.youtube.com/watch?v=ozhuzdE8dRc)
+
+
+
+
+
