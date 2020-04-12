@@ -260,8 +260,8 @@ setwd("~/Desktop")
 lda_acmi <- mallet_lda(
     documents = dtm_acmi,
     topics = 30,
-    iterations = 1300,
-    burnin = 800,
+    iterations = 20000,
+    burnin = 10000,
     alpha = 1,
     beta = 0.01,
     hyperparameter_optimization_interval = 20,
