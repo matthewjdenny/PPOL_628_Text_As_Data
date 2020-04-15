@@ -30,11 +30,12 @@ Syllabus is available to download [here](https://github.com/matthewjdenny/PPOL_6
 ### Week 10 - Topic Models:
 * Lecture Video: [https://www.youtube.com/watch?v=5onqkjEHGyE](https://www.youtube.com/watch?v=5onqkjEHGyE)
 * Lab Video: [https://www.youtube.com/watch?v=ozhuzdE8dRc](https://www.youtube.com/watch?v=ozhuzdE8dRc)
+* Combined Q&A video with Week 11: [https://www.youtube.com/watch?v=0m4ZnCyz-c0](https://www.youtube.com/watch?v=0m4ZnCyz-c0)
 
 ### Week 11 - Topic Model Extensions + Validation:
 * Lecture Video: [https://www.youtube.com/watch?v=BPfzFs6wdNA](https://www.youtube.com/watch?v=BPfzFs6wdNA)
 * Lab Video: [https://www.youtube.com/watch?v=uZfYWU0i4nc](https://www.youtube.com/watch?v=uZfYWU0i4nc)
-
+* Combined Q&A video with Week 10: [https://www.youtube.com/watch?v=0m4ZnCyz-c0](https://www.youtube.com/watch?v=0m4ZnCyz-c0)
 
 
 
