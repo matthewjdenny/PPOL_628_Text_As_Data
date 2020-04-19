@@ -4,6 +4,10 @@
 # and
 # https://keras.rstudio.com/articles/examples/pretrained_word_embeddings.html
 # for some parts of this lab.
+# You can find more pre-trained word embeddings here:
+# http://vectors.nlpl.eu/repository/
+# You can get the full word2vec pretrained embeddings from a download link here:
+# https://code.google.com/archive/p/word2vec/
 
 # Start by installing the R package:
 install.packages(c("keras","text2vec","Rtsne","ggrepel"))
