@@ -37,6 +37,10 @@ Syllabus is available to download [here](https://github.com/matthewjdenny/PPOL_6
 * Lab Video: [https://www.youtube.com/watch?v=uZfYWU0i4nc](https://www.youtube.com/watch?v=uZfYWU0i4nc)
 * Combined Q&A video with Week 10: [https://www.youtube.com/watch?v=0m4ZnCyz-c0](https://www.youtube.com/watch?v=0m4ZnCyz-c0)
 
+### Week 12 - Word Embeddings:
+* Lecture Video: [https://www.youtube.com/watch?v=S3aeBuYgfa8](https://www.youtube.com/watch?v=S3aeBuYgfa8)
+* Lab Video: [https://www.youtube.com/watch?v=O2P9J5q2T48](https://www.youtube.com/watch?v=O2P9J5q2T48)
+
 
 
 
