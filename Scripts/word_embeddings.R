@@ -1,4 +1,4 @@
-
+# Word Embeddings
 # We are going to broadly follow:
 # https://cbail.github.io/textasdata/word2vec/rmarkdown/word2vec.html
 # and
@@ -10,13 +10,14 @@
 # https://code.google.com/archive/p/word2vec/
 
 # Start by installing the R package:
-install.packages(c("keras","text2vec","Rtsne","ggrepel"))
+install.packages(c("keras","text2vec","Rtsne","ggrepel","rio"))
 library(keras)
 library(stringr)
 library(text2vec)
 library(Rtsne)
 library(ggplot2)
 library(ggrepel)
+library(rio)
 
 # If you want to try computing your own word embeddings, you will need to
 # actually install the underlying software on our computers:
@@ -79,7 +80,7 @@ find_similar_words("partisan", embedding_matrix_200, n = 20)
 
 
 # find most similar terms to abortion:
-find_similar_words("abortion", embedding_matrix_200, n = 10)
+find_similar_words("abortion", embedding_matrix_200, n = 20)
 
 # We can also use vector addition/subtraction to find (for example) non partisan
 # synnonyms to the term abortion:
@@ -90,7 +91,7 @@ similarities <- sim2(x = embedding_matrix_200,
                      y = analogy,
                      method = "cosine")
 
-similarities[,1] %>% sort(decreasing = TRUE) %>% head(10)
+similarities[,1] %>% sort(decreasing = TRUE) %>% head(20)
 
 
 # we can also use word embeddings to solve analogies:
@@ -115,6 +116,17 @@ word_embeddings <- rio::import(file.path(GLOVE_DIR, 'glove.6B.50d.txt'),
 embedding_matrix <- as.matrix(word_embeddings[,2:51])
 # assign the words themselves as the row names:
 rownames(embedding_matrix) <- word_embeddings[,1]
+
+# try the same thing but with 50d vectors:
+analogy = embedding_matrix["abortion", , drop = FALSE] -
+    embedding_matrix["partisan", , drop = FALSE]
+
+similarities <- sim2(x = embedding_matrix,
+                     y = analogy,
+                     method = "cosine")
+
+similarities[,1] %>% sort(decreasing = TRUE) %>% head(20)
+
 
 # lets try out this dataset of 9799 tweets from elected officials in the US:
 load(url("https://cbail.github.io/Elected_Official_Tweets.Rdata"))
@@ -143,9 +155,9 @@ document_embeddings <- function(doc_tokens,
     doc_embedding <- rep(0,ncol(embedding_matrix))
 
     # remove blank tokens
-    rem <- which(tokens == "")
+    rem <- which(doc_tokens == "")
     if (length(rem) > 0) {
-        tokens <- tokens[-rem]
+        doc_tokens <- doc_tokens[-rem]
     }
 
     # determine which tokens in the document match the vocaubulary in the
@@ -187,9 +199,12 @@ for (i in 1:length(tokens)) {
 }
 
 # make sure that the rownames are the text of the documents:
-rownames(embedded_docs) <- tweets$text
+# rownames(embedded_docs) <- tweets$text
 # save the output:
-save(embedded_docs, file = "~/Desktop/Embedded_Political_Docs.RData")
+# save(embedded_docs, file = "~/Desktop/Embedded_Political_Docs.RData")
+
+# load in the pore-saved document embeddings from the git repo:
+load("~/Desktop/Embedded_Political_Docs.RData")
 
 # lets take a look at some tweets to compare:
 head(tweets$text)
@@ -198,7 +213,7 @@ head(tweets$text)
 tail(tweets$text)
 
 # now lets find similar tweets based on their embedding:
-find_similar_words(tweets$text[2],embedded_docs, n = 5)
+find_similar_words(tweets$text[2],embedded_docs, n = 10)
 
 find_similar_words(tail(tweets$text)[3],embedded_docs, n = 5)
 
